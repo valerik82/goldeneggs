@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chick Thimble</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section id="startScreen" class="start-screen" aria-label="Start screen">
+    <div class="start-card">
+      <h2>Chick Thimble</h2>
+      <div class="start-egg" aria-hidden="true"></div>
+      <button id="startNowBtn" class="play-btn start-btn">Play Now</button>
+    </div>
+  </section>
+  <main class="game">
+    <header class="topbar card">
+      <h1>Chick Thimble</h1>
+      <div class="balance-wrap">
+        <span class="label">Balance</span>
+        <span class="balance" id="balanceDisplay">1000</span>
+        <span class="coin-icon" aria-hidden="true">●</span>
+      </div>
+    </header>
+
+    <section class="controls card">
+      <div class="bet-row">
+        <label for="betInput">Bet</label>
+        <div class="bet-input-wrap">
+          <input id="betInput" type="number" min="1" step="1" value="50" />
+          <span class="coin-icon" aria-hidden="true">●</span>
+        </div>
+      </div>
+      <div class="bet-buttons">
+        <button id="halfBetBtn" class="small-btn">1/2</button>
+        <button id="doubleBetBtn" class="small-btn">x2</button>
+        <button id="maxBetBtn" class="small-btn">Max</button>
+      </div>
+      <div class="mode-row">
+        <span class="mode-label">Chicks</span>
+        <div class="chick-mode-buttons" role="group" aria-label="Choose chicks per round">
+          <button id="oneChickBtn" class="small-btn mode-btn active" aria-pressed="true">1 Chick</button>
+          <button id="twoChickBtn" class="small-btn mode-btn" aria-pressed="false">2 Chicks</button>
+        </div>
+      </div>
+      <button id="playBtn" class="play-btn">Play</button>
+    </section>
+
+    <section class="arena card" aria-live="polite">
+      <div id="statusText" class="status">Set your bet and press Play.</div>
+      <div id="eggTrack" class="egg-track">
+        <button class="egg-slot" data-slot="0" aria-label="Select egg 1">
+          <div class="egg-shell"></div>
+          <div class="egg-crack"></div>
+          <div class="chick">
+            <div class="chick-body"></div>
+            <div class="chick-eye"></div>
+            <div class="chick-beak"></div>
+            <div class="chick-wing"></div>
+          </div>
+        </button>
+        <button class="egg-slot" data-slot="1" aria-label="Select egg 2">
+          <div class="egg-shell"></div>
+          <div class="egg-crack"></div>
+          <div class="chick">
+            <div class="chick-body"></div>
+            <div class="chick-eye"></div>
+            <div class="chick-beak"></div>
+            <div class="chick-wing"></div>
+          </div>
+        </button>
+        <button class="egg-slot" data-slot="2" aria-label="Select egg 3">
+          <div class="egg-shell"></div>
+          <div class="egg-crack"></div>
+          <div class="chick">
+            <div class="chick-body"></div>
+            <div class="chick-eye"></div>
+            <div class="chick-beak"></div>
+            <div class="chick-wing"></div>
+          </div>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

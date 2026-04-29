@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">goldeneggs</string>
+    <string name="title_activity_main">goldeneggs</string>
+    <string name="package_name">com.goldeneggsappmobsdkf</string>
+    <string name="custom_url_scheme">com.goldeneggsappmobsdkf</string>
+</resources>

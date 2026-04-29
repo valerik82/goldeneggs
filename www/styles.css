@@ -1,0 +1,421 @@
+:root {
+  --bg-top: #2f0e6e;
+  --bg-bottom: #6b1fb7;
+  --card: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.25);
+  --text: #fff8ff;
+  --accent-green: #56df9d;
+  --gold-1: #f6d46f;
+  --gold-2: #dd9f1d;
+  --gold-3: #fff4ba;
+  --danger: #ffb2c6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 10%, #7e2de2 0%, transparent 30%),
+    radial-gradient(circle at 80% 90%, #4e0d8a 0%, transparent 32%),
+    linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+}
+
+.start-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: radial-gradient(circle at 30% 20%, rgba(151, 73, 255, 0.4), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(46, 186, 125, 0.2), transparent 40%),
+    rgba(29, 8, 62, 0.78);
+  backdrop-filter: blur(7px);
+  transition: opacity 260ms ease, visibility 260ms ease;
+}
+
+.start-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.start-card {
+  width: min(92vw, 420px);
+  padding: 1rem 1rem 1.25rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: linear-gradient(180deg, rgba(82, 26, 153, 0.95), rgba(49, 13, 98, 0.95));
+  box-shadow: 0 14px 30px rgba(11, 3, 24, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  text-align: center;
+}
+
+.start-card h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.6rem, 8vw, 2.15rem);
+  letter-spacing: 0.03em;
+}
+
+.start-egg {
+  margin: 0 auto 1rem;
+  width: min(44vw, 145px);
+  aspect-ratio: 0.78;
+  border-radius: 49% 49% 45% 45% / 56% 56% 42% 42%;
+  background: radial-gradient(circle at 35% 27%, var(--gold-3) 0 20%, transparent 27%),
+    linear-gradient(150deg, #fef7d3 0%, var(--gold-1) 38%, var(--gold-2) 75%, #af780f 100%);
+  box-shadow: inset -7px -10px 14px rgba(89, 55, 7, 0.42), inset 6px 8px 10px rgba(255, 255, 255, 0.35),
+    0 10px 18px rgba(17, 7, 31, 0.55);
+}
+
+.start-btn {
+  width: min(86%, 240px);
+}
+
+.game {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(30, 7, 55, 0.35);
+}
+
+.topbar {
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.1rem, 4vw, 1.65rem);
+  letter-spacing: 0.02em;
+}
+
+.balance-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(115, 36, 210, 0.7), rgba(70, 16, 130, 0.7));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.label {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.balance {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.coin-icon {
+  color: #ffd447;
+  text-shadow: 0 0 10px rgba(255, 216, 87, 0.8);
+  font-size: 0.85rem;
+}
+
+.controls {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.bet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bet-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 200px;
+  padding: 0.15rem 0.55rem;
+  border-radius: 12px;
+  background: rgba(24, 10, 46, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+#betInput {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.bet-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.mode-label {
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.chick-mode-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 260px;
+}
+
+.mode-btn {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.6rem;
+}
+
+.mode-btn.active {
+  background: linear-gradient(180deg, #9df8c6, #4dcf90);
+  box-shadow: 0 3px 0 #2d885c, 0 6px 14px rgba(9, 67, 42, 0.45);
+}
+
+button {
+  border: 0;
+  color: #2a0b53;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.small-btn {
+  border-radius: 12px;
+  padding: 0.55rem;
+  background: linear-gradient(180deg, #f7e39b, #e3b93f);
+  box-shadow: 0 3px 0 #9d6f05, 0 6px 14px rgba(33, 16, 4, 0.38);
+}
+
+.small-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #9d6f05, 0 3px 8px rgba(33, 16, 4, 0.35);
+}
+
+.play-btn {
+  border-radius: 14px;
+  font-size: 1.02rem;
+  padding: 0.8rem;
+  background: linear-gradient(180deg, #75f7b8, #3dbd7f);
+  box-shadow: 0 4px 0 #2d885c, 0 8px 15px rgba(9, 67, 42, 0.45);
+}
+
+.play-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #2d885c, 0 4px 9px rgba(9, 67, 42, 0.45);
+}
+
+.play-btn:disabled,
+.small-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.arena {
+  padding: 0.85rem;
+}
+
+.status {
+  text-align: center;
+  min-height: 1.4rem;
+  margin-bottom: 0.65rem;
+  font-weight: 700;
+  color: #f8ecff;
+}
+
+.status.win {
+  color: #a8ffd3;
+}
+
+.status.lose {
+  color: var(--danger);
+}
+
+.egg-track {
+  position: relative;
+  height: min(46vw, 220px);
+  max-height: 240px;
+  min-height: 170px;
+}
+
+.egg-slot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 30%;
+  max-width: 185px;
+  aspect-ratio: 0.78;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.egg-shell {
+  width: 100%;
+  height: 100%;
+  border-radius: 49% 49% 45% 45% / 56% 56% 42% 42%;
+  background: radial-gradient(circle at 34% 28%, var(--gold-3) 0 20%, transparent 27%),
+    linear-gradient(150deg, #fef7d3 0%, var(--gold-1) 38%, var(--gold-2) 75%, #af780f 100%);
+  box-shadow: inset -7px -10px 14px rgba(89, 55, 7, 0.42), inset 6px 8px 10px rgba(255, 255, 255, 0.35),
+    0 8px 14px rgba(17, 7, 31, 0.5);
+  transition: transform 230ms ease;
+}
+
+.egg-slot.selectable:hover .egg-shell {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.egg-crack {
+  position: absolute;
+  inset: 0;
+  border-radius: 49% 49% 45% 45% / 56% 56% 42% 42%;
+  opacity: 0;
+  background: conic-gradient(from 120deg at 50% 62%, transparent 0 10%, rgba(255, 255, 255, 0.86) 10% 12%, transparent 12% 17%, rgba(95, 44, 4, 0.68) 17% 21%, transparent 21% 100%);
+  mix-blend-mode: screen;
+}
+
+.chick {
+  position: absolute;
+  left: 50%;
+  bottom: 13%;
+  width: 62%;
+  height: 64%;
+  transform: translate(-50%, 60%) scale(0.3);
+  opacity: 0;
+}
+
+.chick.show {
+  opacity: 1;
+  transform: translate(-50%, 0%) scale(1);
+}
+
+.chick.hide {
+  opacity: 0;
+  transform: translate(-50%, 60%) scale(0.3);
+}
+
+.chick-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 27%, #fff9bd 0 24%, #ffd84b 54%, #efae12 100%);
+  box-shadow: inset -5px -7px 10px rgba(159, 102, 4, 0.35), 0 5px 8px rgba(34, 14, 4, 0.4);
+}
+
+.chick-eye {
+  position: absolute;
+  right: 31%;
+  top: 30%;
+  width: 8%;
+  height: 8%;
+  border-radius: 50%;
+  background: #2f1037;
+}
+
+.chick-beak {
+  position: absolute;
+  right: 20%;
+  top: 47%;
+  width: 19%;
+  height: 13%;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  background: #ff8d3a;
+}
+
+.chick-wing {
+  position: absolute;
+  left: 16%;
+  top: 44%;
+  width: 33%;
+  height: 27%;
+  border-radius: 58% 42% 52% 48%;
+  background: rgba(255, 244, 140, 0.95);
+}
+
+.egg-slot.reveal .egg-crack {
+  opacity: 1;
+  animation: crack-flash 700ms ease forwards;
+}
+
+.egg-slot.reveal .chick.show {
+  opacity: 1;
+  animation: pop-out 600ms cubic-bezier(0.2, 0.9, 0.35, 1.2) forwards;
+}
+
+.egg-slot.reveal .chick.hide {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes crack-flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  35% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: translate(-50%, 68%) scale(0.3);
+  }
+  60% {
+    transform: translate(-50%, -12%) scale(1.08);
+  }
+  100% {
+    transform: translate(-50%, 0%) scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  .game {
+    padding: 0.7rem;
+  }
+
+  .controls,
+  .arena,
+  .topbar {
+    border-radius: 14px;
+  }
+
+  .egg-slot {
+    width: 31%;
+  }
+}
