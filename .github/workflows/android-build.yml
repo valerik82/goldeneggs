@@ -24,9 +24,11 @@ jobs:
         run: chmod +x gradlew
         working-directory: android
 
-      - name: Create missing Capacitor Cordova plugins folder
-        run: mkdir -p capacitor-cordova-android-plugins
-        working-directory: android   
+           - name: Create missing Capacitor Cordova files
+        run: |
+          mkdir -p capacitor-cordova-android-plugins
+          touch capacitor-cordova-android-plugins/cordova.variables.gradle
+        working-directory: android
 
       - name: Build Release AAB
         run: ./gradlew bundleRelease
