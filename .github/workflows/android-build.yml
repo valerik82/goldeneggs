@@ -21,13 +21,15 @@ jobs:
           cache: gradle
 
       - name: Give gradlew permission
-        run: chmod +x ./gradlew
+        run: chmod +x gradlew
+        working-directory: android
 
       - name: Build Release AAB
         run: ./gradlew bundleRelease
+        working-directory: android
 
       - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
           name: release-aab
-          path: app/build/outputs/bundle/release/*.aab
+          path: android/app/build/outputs/bundle/release/*.aab
